@@ -15,6 +15,6 @@ class BalanceTransaction extends Model
     ];
 
     public function player() {
-        return $this->belongsTo(BalanceTransaction::class);
+        return $this->belongsTo(Player::class);
     }
 }

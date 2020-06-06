@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 
 
 use App\Bet;
+use App\Constants\Ranges;
 use App\Player;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class BetController {
     function bet(Request $request) {
@@ -14,16 +16,13 @@ class BetController {
         $stakeAmount = $request->input('stake_amount');
         $selections = $request->input('selections');
         $playerController = new PlayerController();
+        $player = $playerController->checkIfPlayerExistsAndGet($playerId);
 
 
-        if (!Player::where('id', '=', $playerId)->exists()) {
-            $player = $playerController->create($playerId);
-        } else {
-            $player = $playerController->get($playerId);
-        }
+        return response()->setStatusCode(201);
     }
 
-    function createInDb($playerId, $stakeAmount) {
+    function create($playerId, $stakeAmount) {
         $bet = new Bet();
         $bet->player_id = $playerId;
         $bet->stake = $stakeAmount;
@@ -32,15 +31,13 @@ class BetController {
         return $bet;
     }
 
-    function get() {
+    function isMaxWinExceeded($allSelectionOdds, $stake) {
+        $amount = $stake;
 
-    }
+        foreach ($allSelectionOdds as $odd) {
+            $amount = $odd * $amount;
+        }
 
-    function update() {
-
-    }
-
-    function delete() {
-
+        return $amount > Ranges::MAX_WIN_AMOUNT;
     }
 }

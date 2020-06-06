@@ -13,7 +13,7 @@ class CreateBetSelectionsTable extends Migration {
     public function up() {
         Schema::create('bet_selections', function (Blueprint $table) {
             $table->id();
-            $table->decimal('odds', 3, 3);
+            $table->unsignedDecimal('odds', 5, 3);
             $table->foreignId('bet_id')->constrained('bet')->onDelete('cascade');
             $table->timestamps();
         });

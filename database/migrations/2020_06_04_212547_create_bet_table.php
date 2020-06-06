@@ -13,7 +13,7 @@ class CreateBetTable extends Migration {
     public function up() {
         Schema::create('bet', function (Blueprint $table) {
             $table->id();
-            $table->decimal('stake_amount', 13, 2);
+            $table->unsignedDecimal('stake_amount', 5, 2);
 
             $table->string('player_id');
             $table->foreign('player_id')->references('id')->on('player')->onDelete('cascade');

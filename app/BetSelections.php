@@ -10,6 +10,6 @@ class BetSelections extends Model {
     protected $fillable = ['bet_id', 'odds'];
 
     public function bet() {
-        return $this->belongsTo(BetSelections::class);
+        return $this->belongsTo(Bet::class);
     }
 }
