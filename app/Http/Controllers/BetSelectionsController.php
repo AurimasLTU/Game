@@ -1,17 +1,19 @@
 <?php
 
-
 namespace App\Http\Controllers;
 
 use App\BetSelections;
 
-class BetSelectionsController {
-    function create($betId, $odds) {
-        $balance = new BetSelections();
-        $balance->bet_id = $betId;
-        $balance->odds = $odds;
-        $balance->save();
+class BetSelectionsController
+{
+    function create($betId, $odds, $selectionId)
+    {
+        $betSelections = new BetSelections();
+        $betSelections->bet_id = $betId;
+        $betSelections->selection_id = $selectionId;
+        $betSelections->odds = $odds;
+        $betSelections->save();
 
-        return $balance;
+        return $betSelections;
     }
 }

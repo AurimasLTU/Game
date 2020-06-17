@@ -4,7 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Player extends Model {
+class Player extends Model
+{
     protected $table = 'player';
 
     public $incrementing = false;
@@ -14,11 +15,13 @@ class Player extends Model {
         'balance'
     ];
 
-    public function balance_transactions() {
+    public function balance_transactions()
+    {
         return $this->hasMany(BalanceTransaction::class);
     }
 
-    public function bets() {
+    public function bets()
+    {
         return $this->hasMany(Bet::class);
     }
 }

@@ -4,13 +4,15 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBalanceTransactionTable extends Migration {
+class CreateBalanceTransactionTable extends Migration
+{
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public function up() {
+    public function up()
+    {
         Schema::create('balance_transaction', function (Blueprint $table) {
             $table->id();
             $table->decimal('amount', 13, 2);
@@ -27,7 +29,8 @@ class CreateBalanceTransactionTable extends Migration {
      *
      * @return void
      */
-    public function down() {
+    public function down()
+    {
         Schema::dropIfExists('balance_transaction');
     }
 }

@@ -14,7 +14,8 @@ class BalanceTransaction extends Model
         'amount_before'
     ];
 
-    public function player() {
+    public function player()
+    {
         return $this->belongsTo(Player::class);
     }
 }
