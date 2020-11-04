@@ -1,6 +1,6 @@
 ### Api for making a bet
 
-Make a request on /api/bet to use this api.
+Make a post request on /api/bet to use this api.
 
 Correct input structure:
 
